@@ -1,0 +1,70 @@
+<template>
+    <v-container>
+        <v-row justify="center">
+            <v-col sm="12" md="6" xl="6" lg="6">
+                <v-img lazy-src="../assets/test.jpg" src="../assets/test.jpg"></v-img>
+            </v-col>
+            <v-col sm="12" md="4" xl="4" lg="4">
+                <p>{{ question_text }}</p>
+                <v-radio-group v-model="selected_value">
+                    <v-radio v-for="(option, i) in options" :key="i" :readonly="done"
+                             :color="color" :label="option.label" :value="option.value">
+                    </v-radio>
+                </v-radio-group>
+                <v-divider/>
+                <p v-show="done">答案是{{ answer_value }}</p>
+            </v-col>
+        </v-row>
+    </v-container>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            selected_value: "",
+            color: "primary",
+            question_text: "THIS IS A QUESTION:",
+            done: false,
+            options: [
+                {
+                    value: "A",
+                    label: "A.TEXT OF A",
+                },
+                {
+                    value: "B",
+                    label: "B.TEXT OF B",
+                },
+                {
+                    value: "C",
+                    label: "C.TEXT OF C",
+                },
+                {
+                    value: "D",
+                    label: "D.TEXT OF D",
+                },
+            ],
+            answer_value: "B",
+        };
+    },
+    methods: {
+        load_question() {
+        },
+        show_answer() {
+            this.done = true;
+            if (this.selected_value === this.answer_value) {
+                this.color = "success";
+            } else {
+                this.color = "error";
+            }
+        },
+    },
+    watch: {
+        selected_value: {
+            handler() {
+                this.show_answer();
+            },
+        },
+    },
+};
+</script>
