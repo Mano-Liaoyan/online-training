@@ -13,7 +13,29 @@
 <noscript>
     <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
 </noscript>
+
 <div id="app"></div>
+
 <!-- built files will be auto injected -->
 </body>
+
 </html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        //The first argument are the elements to which the plugin shall be initialized
+        //The second argument has to be at least a empty object or a object with your desired options
+        OverlayScrollbars(document.querySelectorAll("body"), {
+            scrollbars: {
+                visibility: "auto",
+                autoHide: "scroll",
+                autoHideDelay: 800,
+                dragScrolling: true,
+                clickScrolling: false,
+                touchSupport: true,
+                snapHandle: false
+            },
+        });
+    });
+</script>
+

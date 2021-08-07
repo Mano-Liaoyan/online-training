@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container class="pa-0">
         <v-row class="text-center" justify="center">
             <v-col v-for="(item,idx) in 12" :key="idx" class="pb-0">
                 <TrainingCard></TrainingCard>
