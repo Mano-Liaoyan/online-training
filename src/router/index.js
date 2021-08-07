@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '@/views/Home.vue'
 import Train from "@/views/Train";
 import Settings from "@/views/Settings";
 import Test from "@/views/Test";
+import Login from "@/views/Login";
 
 Vue.use(VueRouter)
 
@@ -31,7 +32,7 @@ const routes = [
     {
         path: '/login',
         name: 'Login',
-        component: () => import('@/views/Login.vue')
+        component: Login
     },
 ]
 

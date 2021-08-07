@@ -1,12 +1,12 @@
 <template>
     <v-container fill-height fluid>
-        <v-row align="center" justify="center">
+        <v-row align="center" justify="center" fill-height>
             <v-col sm="12" md="4" xl="4" lg="4">
                 <v-card :loading="loading">
                     <v-progress-linear class="px-0 py-0" slot="progress" indeterminate/>
                     <div class="px-5 py-5">
                         <v-card-subtitle class="display-1"> 注册/登陆</v-card-subtitle>
-                        <v-form>
+                        <v-form ref="form">
                             <v-text-field label="用户名" outlined prepend-icon="mdi-account"
                                           v-model="login_form.username" :rules="[rules.username_required]"/>
                             <v-text-field label="密码" outlined prepend-icon="mdi-lock" autocomplete
@@ -43,7 +43,8 @@ export default {
     },
     methods: {
         login() {
-            if (!!this.login_form.username && !!this.login_form.password) {
+            let isValid = this.$refs.form.validate()
+            if (isValid) {
                 this.loading = true;
                 this.$axios.post("/api/auth/token", qs.stringify(this.login_form)).then((res) => {
                     if (res.status === 200) {

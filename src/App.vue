@@ -10,7 +10,7 @@
         <!--  路由切换  -->
         <v-main>
             <!--  路由间切换动画  -->
-            <v-container>
+            <v-container fluid class="pa-2">
                 <v-slide-x-transition mode="out-in">
                     <router-view/>
                 </v-slide-x-transition>
@@ -82,31 +82,4 @@ export default {
 </script>
 
 <style>
-/*html {
-    overflow-y: hidden !important;
-}
-
-::-webkit-scrollbar { !* 滚动条整体部分 *!
-    width: 6px;
-}
-
-::-webkit-scrollbar-track { !* 外层轨道 *!
-    border-radius: 0;
-}
-
-::-webkit-scrollbar-track-piece { !*内层轨道，滚动条中间部分 *!
-    background-color: #E1E1E1;
-    border-radius: 0;
-}
-
-::-webkit-scrollbar-thumb { !* 滑块 *!
-    width: 10px;
-    border-radius: 100em;
-    background: #757575;
-}
-
-::-webkit-scrollbar-thumb:hover { !* 鼠标移入滑块 *!
-    background: #909090;
-}*/
-
 </style>
