@@ -1,7 +1,7 @@
 <template>
     <v-app id="inspire">
         <!--  头部状态栏  -->
-        <v-app-bar :color="color" dark app elevation="0" clipped-left>
+        <v-app-bar :color="color" dark app elevation="0" clipped-left height="42">
             <v-btn v-show="showBack" icon @click="$router.back()">
                 <v-icon>mdi-arrow-left</v-icon>
             </v-btn>

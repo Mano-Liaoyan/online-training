@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from "../store"
 import Home from '@/views/Home.vue'
 import Train from "@/views/Train";
 import Settings from "@/views/Settings";
@@ -41,7 +42,7 @@ const router = new VueRouter({
 })
 
 //注释掉以方便调试
-/*router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
     if (to.path !== "/login") {
         let token = store.state.token;
         if (token !== "") {
@@ -55,6 +56,6 @@ const router = new VueRouter({
     } else {
         next();
     }
-});*/
+});
 
 export default router

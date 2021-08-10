@@ -46,21 +46,22 @@ export default {
             let isValid = this.$refs.form.validate()
             if (isValid) {
                 this.loading = true;
-                this.$axios.post("/api/auth/token", qs.stringify(this.login_form)).then((res) => {
-                    if (res.status === 200) {
-                        this.$store.commit("set_token", res.data["access_token"]);
-                        this.$store.commit("set_username", this.login_form.username);
-                        this.$router.push("/");
-                    }
-                }).catch((e) => {
-                    if (e.response) {
-                        console.log(e.response);
-                        if (e.response.status === 401) {
-                            console.log("wrong passwd");
+                this.$axios
+                    .post("/auth/token", qs.stringify(this.login_form))
+                    .then((res) => {
+                        if (res.status === 200) {
+                            this.$store.commit("set_token", res.data["access_token"]);
+                            this.$store.commit("set_username", this.login_form.username)
+                            this.$router.push("/");
+                        }
+                    })
+                    .catch((e) => {
+                        if (e.response) {
+                            if (e.response.status === 401) alert("用户名或密码错误");
+                            else alert("登陆失败");
                             this.loading = false;
                         }
-                    }
-                });
+                    });
             }
         },
     },
