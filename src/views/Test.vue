@@ -48,7 +48,7 @@ export default {
     },
     methods: {
         async get_question_id() {
-            this.$axios.get("/question_id").then((res) => {
+            await this.$axios.get("/question_id").then((res) => {
                 console.log(res);
                 if (res.status === 200) {
                     return res.data["question_id"];
@@ -57,18 +57,16 @@ export default {
                 this.load_question(id);
             });
         },
-        load_question(id) {
-            this.$axios
-                .get("/question", {
-                    params: {question_id: id},
-                }).then((res) => {
+        async load_question(id) {
+            await this.$axios.get("/question", {params: {question_id: id}}).then((res) => {
                 if (res.status === 200) {
                     console.log("****" + id);
                     let data = res.data;
                     this.question_text = data["text"];
                     this.options = data["options"];
                     this.answer_value = data["answer"];
-                    this.question_img_url = this.$axios.defaults.baseURL + "/img/" + data["question_img_token"];
+                    this.question_img_url = this.$axios.defaults.baseURL + "/img/"
+                        + data["question_img_token"];
                     this.answer_img_url =
                         this.$axios.defaults.baseURL + "/img/" + data["answer_img_token"];
                 }
